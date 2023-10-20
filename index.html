@@ -17,84 +17,100 @@
     	</div>
 
     	<div class="row justify-content-center">
+    		<div class="col-sm-8 col-md-6 mb-5 border"></div>
+    	</div>
+
+    	<div class="row justify-content-center">
     		<div class="col-sm-12 col-md-6">
-    			<form class="border rounded p-5">
+    			<form class="border rounded p-5 memoForm">
     				<p class="mb-3">Sets to include:</p>
 					  <div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="zero" checked>
-						  <label class="form-check-label" for="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" value="0" id="zero" checked>
+						  <label class="form-check-label" for="zero">
 						    00-09
 						  </label>
 						</div>
 						<div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="ten">
-						  <label class="form-check-label" for="flexCheckChecked">
+						  <input class="form-check-input" type="checkbox" value="1" id="ten">
+						  <label class="form-check-label" for="ten">
 						    10-19
 						  </label>
 						</div>
 						<div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="twenty">
-						  <label class="form-check-label" for="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" value="2" id="twenty">
+						  <label class="form-check-label" for="twenty">
 						    20-29
 						  </label>
 						</div>
 						<div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="thirty">
-						  <label class="form-check-label" for="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" value="3" id="thirty">
+						  <label class="form-check-label" for="thirty">
 						    30-39
 						  </label>
 						</div>
 						<div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="forty">
-						  <label class="form-check-label" for="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" value="4" id="forty">
+						  <label class="form-check-label" for="forty">
 						    40-49
 						  </label>
 						</div>
 						<div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="fifty">
-						  <label class="form-check-label" for="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" value="5" id="fifty">
+						  <label class="form-check-label" for="fifty">
 						    50-59
 						  </label>
 						</div>
 						<div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="sixty">
-						  <label class="form-check-label" for="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" value="6" id="sixty">
+						  <label class="form-check-label" for="sixty">
 						    60-69
 						  </label>
 						</div>
 						<div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="seventy">
-						  <label class="form-check-label" for="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" value="7" id="seventy">
+						  <label class="form-check-label" for="seventy">
 						    70-79
 						  </label>
 						</div>
 						<div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="eighty">
-						  <label class="form-check-label" for="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" value="8" id="eighty">
+						  <label class="form-check-label" for="eighty">
 						    80-89
 						  </label>
 						</div>
 						<div class="form-check-inline">
-						  <input class="form-check-input" type="checkbox" value="" id="ninety">
-						  <label class="form-check-label" for="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" value="9" id="ninety">
+						  <label class="form-check-label" for="ninety">
 						    90-99
 						  </label>
 						</div>
 
 						<div class="mt-3">
-							<label class="form-label mb-3" for="typeNumber">String length (in sets of 6): </label>
-						  <input type="number" id="typeNumber" class="form-control" min="1" max="100" placeholder="1" />
+							<label class="form-label mb-3" for="stringLength">String length (in sets of 6): </label>
+						  <input type="number" id="stringLength" class="form-control" min="1" max="100" placeholder="1" required/>
+						</div>
+
+						<div class="mt-3">
+							<label class="form-label mb-3" for="timer">Time limit (in seconds): </label>
+						  <input type="number" id="timer" class="form-control" min="10" max="1800" placeholder="60" required/>
 						</div>
 
 						<div class="mt-5 text-center">
-							<button type="submit" class="btn btn-sm btn-primary">Generate String</button>
+							<button type="submit" class="btn btn-sm btn-outline-primary submitBtn">Generate Number</button>
 						</div>
 
 					</form>
     		</div>
     	</div>
+
+    	<div class="row justify-content-center">
+    		<div class="col-8 border">
+    			<p class="generatedNum"></p>
+    		</div>
+    	</div>
     </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="./script.js"></script>
   </body>
 </html>
