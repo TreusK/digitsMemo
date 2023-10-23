@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
     <title>Digits memo</title>
   </head>
   <body>
@@ -91,26 +92,45 @@
 						</div>
 
 						<div class="mt-3">
-							<label class="form-label mb-2" for="timer">Time limit (in seconds): </label>
-						  <input type="number" id="timer" class="form-control" min="10" max="1800" placeholder="60" required/>
+							<label class="form-label mb-2" for="timerForm">Time limit (in seconds): </label>
+						  <input type="number" id="timerForm" class="form-control" min="10" max="1800" placeholder="60" required/>
 						</div>
 
 						<div class="mt-5 text-center">
 							<button type="submit" class="btn btn-sm btn-outline-primary submitBtn">Generate Number</button>
 						</div>
 
+						<!-- Container of timer and stuff -->
+
+						
+
 					</form>
+
+					<div class="d-none timerContainer border rounded p-5">
+						<div id="timer">00:00</div>
+					</div>
+
     		</div>
     	</div>
 
-    	<div class="row justify-content-center">
+    	<div class="d-none generatedNumContainer row justify-content-center">
     		<div class="col-8 p-3 mt-3 mb-5 border rounded text-center">
     			<p class="generatedNum text-break"></p>
     		</div>
     	</div>
+
+    	<div class="d-none resultFormContainer row justify-content-center">
+    		<div class="col-8 p-3 mt-3 mb-5 border rounded text-center">
+    			<form class="border rounded p-5">
+    				<label class="form-label mb-2" for="resultInput">Write the number here</label>
+						<input type="text" id="resultInput" class="form-control"/>
+    			</form>
+    		</div>
+    	</div>
+
     </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  <script src="./script.js"></script>
+  <script src="bundle.js"></script>
   </body>
 </html>

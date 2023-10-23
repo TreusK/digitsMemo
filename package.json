@@ -4,11 +4,13 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-js": "browserify ./src/app.js -o ./public/bundle.js",
+    "watch-js": "watchify ./src/app.js -o ./public/bundle.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.2"
+    "bootstrap": "^5.3.2",
+    "browserify": "^17.0.0"
   }
 }
