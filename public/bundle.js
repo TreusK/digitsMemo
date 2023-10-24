@@ -32,6 +32,7 @@ function handleSubmit(e) {
 
   //Create random X length number
   let randomNum = makeRandomOfLength(stringLength);
+  console.log(randomNum)
 
   //Modify random number to fit chosen sets (if all sets arent chosen)
   if(checkedArr.length != 10) {
@@ -61,7 +62,7 @@ function makeRandomOfLength(strLnght) {
 	let lengthLimit = strLnght.value * 6;
   let randomNum = '';
   for(let i=0; i<lengthLimit; i++)  {
-  	randomNum += Math.floor(Math.random() * 6);
+  	randomNum += Math.floor(Math.random() * 10);
   }
   return randomNum;
 }
