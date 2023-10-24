@@ -8,6 +8,7 @@ let checkBoxes = document.querySelectorAll('.form-check-input');
 let generatedNum = document.querySelector('.generatedNum');
 let generatedNumContainer = document.querySelector('.generatedNumContainer');
 let resultFormContainer = document.querySelector('.resultFormContainer');
+let alertsContainer = document.querySelector('#alertsContainer');
 
 let timer = document.querySelector('#timer');
 let timerContainer = document.querySelector('.timerContainer')
@@ -57,6 +58,7 @@ function handleSubmit(e) {
 }
 
 function handleResultSubmit(e) {
+	deleteAllAlerts();
 	e.preventDefault();
 
 	let userNum = resultInput.value;
@@ -78,7 +80,7 @@ function handleResultSubmit(e) {
 	};
 
 	(arrOfErrors.length == 0) 
-		? console.log('yay')
+		? successGameOver()
 		: console.log(arrOfErrors);
 
 }
@@ -136,6 +138,22 @@ function hideElem(elem) {
 
 function showElem(elem) {
 	elem.classList.remove('d-none');
+}
+
+function createAlert(str, type) {
+	let div = document.createElement('div');
+	div.classList.add('alert', 'alert-'+type);
+	div.innerText = str;
+	alertsContainer.append(div)
+}
+
+function deleteAllAlerts() {
+	alertsContainer.innerHTML = '';
+}
+
+function successGameOver() {
+	createAlert('Well done! Try a harder number next', 'success');
+	showElem(generatedNumContainer);
 }
 
 

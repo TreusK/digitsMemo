@@ -22,8 +22,8 @@
     	</div>
 
     	<div class="row justify-content-center">
-    		<div class="col-sm-12 col-md-6">
-    			<form class="border rounded p-5 memoForm">
+    		<div class="appendHere col-sm-12 col-md-6">
+    			<form class="border rounded p-5 mb-5 memoForm">
     				<p class="mb-2">Sets to include:</p>
 					  <div class="form-check-inline">
 						  <input class="form-check-input" type="checkbox" value="0" id="zero" checked>
@@ -102,21 +102,24 @@
 
 					</form>
 
-					<div class="d-none timerContainer border rounded p-5">
+					<div id="alertsContainer">
+						
+					</div>
+
+					<div class="d-none p-3 mb-2 border rounded text-center generatedNumContainer">
+    				<p class="generatedNum text-break"></p>
+    			</div>
+
+					<div class="d-none timerContainer border rounded border-info border-top-0 border-bottom-0 p-5 my-5">
 						<div id="timer">00:00</div>
 					</div>
 
     		</div>
     	</div>
 
-    	<div class="d-none generatedNumContainer row justify-content-center">
-    		<div class="col-8 p-3 mt-3 mb-5 border rounded text-center">
-    			<p class="generatedNum text-break"></p>
-    		</div>
-    	</div>
 
     	<div class="d-none resultFormContainer row justify-content-center">
-    		<div class="col-12 cold-md-8 p-3 mt-5 mb-5 border rounded text-center">
+    		<div class="col-sm-12 col-md-6 p-3 mb-5 border rounded text-center">
     			<form class="resultForm border rounded p-5">
     				<label class="form-label mb-2" for="resultInput">Write the number here</label>
 						<textarea class="form-control" id="resultInput" rows="3"></textarea>
