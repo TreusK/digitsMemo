@@ -22,6 +22,7 @@ resultForm.addEventListener('submit', handleResultSubmit);
 
 function handleSubmit(e) {
  	e.preventDefault();
+ 	deleteAllAlerts();
 
  	let checkedArr = [];
   checkBoxes.forEach(elem => {
@@ -55,33 +56,36 @@ function handleSubmit(e) {
   showElem(generatedNumContainer);
   showElem(timerContainer); 
   hideElem(resultFormContainer);
+  timerContainer.scrollIntoView({behavior: "smooth"});
 }
 
 function handleResultSubmit(e) {
-	deleteAllAlerts();
 	e.preventDefault();
+	deleteAllAlerts();
 
 	let userNum = resultInput.value;
 
-	let arrOfErrors = [];
+	let errorMessage = '';
 
 	//Check differences of length
-	if(savedNum.length != userNum.length) {
-		(savedNum.length > userNum.length) 
-			? arrOfErrors.push('The original number is longer than that')
-			: arrOfErrors.push('Your number is longer than it should');
+	let savedNumLength = savedNum.length;
+	let userNumLength = userNum.length;
+	if(savedNumLength != userNumLength) {
+		(savedNumLength > userNumLength) 
+			? errorMessage = 'The original number is longer than that, by ' + (savedNumLength - userNumLength)
+			: errorMessage = 'Your number is longer than it should, by ' + (userNumLength - savedNumLength);
 	} else {
 		//Count the chars that are different
 		let counter = 0;
 		for(let i=0; i<savedNum.length; i++) {
 			if(savedNum[i] != userNum[i]) counter++;
 		}
-		if(counter != 0) arrOfErrors.push('You have ' + counter + ' wrong number/s');
+		if(counter != 0) errorMessage = 'You have ' + counter + ' wrong number/s';
 	};
 
-	(arrOfErrors.length == 0) 
+	(errorMessage == '') 
 		? successGameOver()
-		: console.log(arrOfErrors);
+		: failureGameOver(errorMessage);
 
 }
 
@@ -152,8 +156,13 @@ function deleteAllAlerts() {
 }
 
 function successGameOver() {
-	createAlert('Well done! Try a harder number next', 'success');
+	createAlert('Well done! Generate a new number and keep practicing!', 'success');
 	showElem(generatedNumContainer);
+}
+
+function failureGameOver(str) {
+	createAlert(str, 'danger');
+	hideElem(generatedNumContainer);
 }
 
 
