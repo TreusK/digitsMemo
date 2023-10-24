@@ -1,5 +1,7 @@
 let submitBtn = document.querySelector('.submitBtn');
 let memoForm = document.querySelector('.memoForm');
+let resultForm = document.querySelector('.resultForm');
+let resultInput = document.querySelector('#resultInput');
 let stringLength = document.querySelector('#stringLength');
 let timerForm = document.querySelector('#timerForm');
 let checkBoxes = document.querySelectorAll('.form-check-input');
@@ -10,8 +12,11 @@ let resultFormContainer = document.querySelector('.resultFormContainer');
 let timer = document.querySelector('#timer');
 let timerContainer = document.querySelector('.timerContainer')
 let timerInterval;
+let savedNum;
+
 
 memoForm.addEventListener('submit', handleSubmit);
+resultForm.addEventListener('submit', handleResultSubmit);
 
 
 function handleSubmit(e) {
@@ -36,7 +41,7 @@ function handleSubmit(e) {
   //Modify random number to fit chosen sets (if all sets arent chosen)
   if(checkedArr.length != 10) {
   	let randomNumArr = randomNum.split('');
-  	for(let i=0; i<= randomNumArr.length; i+=2) {
+  	for(let i=0; i< randomNumArr.length; i+=2) {
   		randomNumArr[i] = getRandomFromArr(checkedArr);
   	}
   	randomNum = randomNumArr.join('');
@@ -44,10 +49,38 @@ function handleSubmit(e) {
   
   //Show num on screen
   generatedNum.innerText = randomNum;
+  savedNum = randomNum;
   createTimer(timerForm.value);
   showElem(generatedNumContainer);
   showElem(timerContainer); 
   hideElem(resultFormContainer);
+}
+
+function handleResultSubmit(e) {
+	e.preventDefault();
+
+	let userNum = resultInput.value;
+
+	let arrOfErrors = [];
+
+	//Check differences of length
+	if(savedNum.length != userNum.length) {
+		(savedNum.length > userNum.length) 
+			? arrOfErrors.push('The original number is longer than that')
+			: arrOfErrors.push('Your number is longer than it should');
+	} else {
+		//Count the chars that are different
+		let counter = 0;
+		for(let i=0; i<savedNum.length; i++) {
+			if(savedNum[i] != userNum[i]) counter++;
+		}
+		if(counter != 0) arrOfErrors.push('You have ' + counter + ' wrong number/s');
+	};
+
+	(arrOfErrors.length == 0) 
+		? console.log('yay')
+		: console.log(arrOfErrors);
+
 }
 
 
