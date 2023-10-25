@@ -11,3 +11,19 @@
   font-size: 2.5rem;
   font-weight: bold;
 }
+
+#gameOverContainer {
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.gameOverOriginalNumContainer, 
+.gameOverUserNumContainer {
+	color: #333;
+	border-radius: 10px;
+}
+
+.xNumber {
+	border-bottom: 2px solid lightgray;
+}
+

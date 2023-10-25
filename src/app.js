@@ -10,6 +10,9 @@ let generatedNum = document.querySelector('.generatedNum');
 let generatedNumContainer = document.querySelector('.generatedNumContainer');
 let resultFormContainer = document.querySelector('.resultFormContainer');
 let alertsContainer = document.querySelector('#alertsContainer');
+let gameOverContainer = document.querySelector('#gameOverContainer');
+let gameOverOriginalNum = document.querySelector('.gameOverOriginalNum');
+let gameOverUserNum = document.querySelector('.gameOverUserNum');
 
 let timer = document.querySelector('#timer');
 let timerContainer = document.querySelector('.timerContainer')
@@ -41,7 +44,6 @@ function handleSubmit(e) {
 
   //Create random X length number
   let randomNum = makeRandomOfLength(stringLength);
-  console.log(randomNum)
 
   //Modify random number to fit chosen sets (if all sets arent chosen)
   if(checkedArr.length != 10) {
@@ -60,6 +62,7 @@ function handleSubmit(e) {
   showElem(timerContainer); 
   hideElem(resultFormContainer);
   hideElem(giveUpBtn);
+  hideElem(gameOverContainer);
   timerContainer.scrollIntoView({behavior: "smooth"});
 }
 
@@ -88,7 +91,7 @@ function handleResultSubmit(e) {
 	};
 
 	(errorMessage == '') 
-		? successGameOver()
+		? successGameOver(userNum)
 		: failureGameOver(errorMessage);
 
 }
@@ -159,22 +162,29 @@ function deleteAllAlerts() {
 	alertsContainer.innerHTML = '';
 }
 
-function successGameOver() {
+function successGameOver(userNum) {
 	createAlert('Well done! Generate a new number and keep practicing!', 'success');
-	showElem(generatedNumContainer);
+	hideElem(generatedNumContainer);
 	hideElem(giveUpBtn);
+	hideElem(resultFormContainer);
+	gameOverOriginalNum.innerText = savedNum;
+	gameOverUserNum.innerText = userNum;
+	showElem(gameOverContainer);
 }
 
 function failureGameOver(str) {
 	createAlert(str, 'danger');
-	hideElem(generatedNumContainer);
 	showElem(giveUpBtn);
+	giveUpBtn.scrollIntoView({behavior: "smooth"});
 }
 
 function giveUpGameOver() {
 	deleteAllAlerts();
 	createAlert('Too bad! Try again', 'secondary');
-	showElem(generatedNumContainer);
+	hideElem(resultFormContainer);
+	gameOverOriginalNum.innerText = savedNum;
+	gameOverUserNum.innerText = resultInput.value;
+	showElem(gameOverContainer);
 }
 
 

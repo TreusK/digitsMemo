@@ -23,7 +23,7 @@
 
     	<div class="row justify-content-center">
     		<div class="appendHere col-sm-12 col-md-6">
-    			<form class="border rounded p-5 mb-5 memoForm">
+    			<form class="border border-3 rounded p-5 mb-3 memoForm">
     				<p class="mb-2">Sets to include:</p>
 					  <div class="form-check-inline">
 						  <input class="form-check-input" type="checkbox" value="0" id="zero" checked>
@@ -106,11 +106,22 @@
 						
 					</div>
 
-					<div class="d-none p-3 mb-2 border rounded text-center generatedNumContainer">
+					<div class="d-none border border-3 bg-primary bg-gradient" id="gameOverContainer">
+						<div class="gameOverOriginalNumContainer text-center p-2 bg-light mb-4 border border-3">
+							<p class="xNumber">Original Number</p>
+							<p class="gameOverOriginalNum text-break"></p>
+						</div>
+						<div class="gameOverUserNumContainer text-center p-2 bg-light border border-3">
+							<p class="xNumber">Your Number</p>
+							<p class="gameOverUserNum text-break"></p>
+						</div>
+					</div>
+
+					<div class="d-none p-3 mb-2 border border-3 rounded text-center generatedNumContainer">
     				<p class="generatedNum text-break"></p>
     			</div>
 
-					<div class="d-none timerContainer border rounded border-info border-top-0 border-bottom-0 p-5 my-5">
+					<div class="d-none timerContainer border border-3 rounded border-primary border-top-0 border-bottom-0 p-5 my-5 text-primary">
 						<div id="timer">00:00</div>
 					</div>
 
@@ -119,8 +130,8 @@
 
 
     	<div class="d-none resultFormContainer row justify-content-center">
-    		<div class="col-sm-12 col-md-6 p-3 mb-5 border rounded text-center">
-    			<form class="resultForm border rounded p-5">
+    		<div class="col-sm-12 col-md-6 p-3 mb-5 border border-3 rounded text-center">
+    			<form class="resultForm border border-3 rounded p-5">
     				<label class="form-label mb-2" for="resultInput">Write the number here</label>
 						<textarea class="form-control" id="resultInput" rows="3"></textarea>
 						<div class="mt-5 text-center">
