@@ -1,4 +1,5 @@
 let submitBtn = document.querySelector('.submitBtn');
+let giveUpBtn = document.querySelector('.giveUpBtn');
 let memoForm = document.querySelector('.memoForm');
 let resultForm = document.querySelector('.resultForm');
 let resultInput = document.querySelector('#resultInput');
@@ -18,11 +19,13 @@ let savedNum;
 
 memoForm.addEventListener('submit', handleSubmit);
 resultForm.addEventListener('submit', handleResultSubmit);
+giveUpBtn.addEventListener('click', giveUpGameOver);
 
 
 function handleSubmit(e) {
  	e.preventDefault();
  	deleteAllAlerts();
+ 	resultInput.value = '';
 
  	let checkedArr = [];
   checkBoxes.forEach(elem => {
@@ -56,6 +59,7 @@ function handleSubmit(e) {
   showElem(generatedNumContainer);
   showElem(timerContainer); 
   hideElem(resultFormContainer);
+  hideElem(giveUpBtn);
   timerContainer.scrollIntoView({behavior: "smooth"});
 }
 
@@ -148,7 +152,7 @@ function createAlert(str, type) {
 	let div = document.createElement('div');
 	div.classList.add('alert', 'alert-'+type);
 	div.innerText = str;
-	alertsContainer.append(div)
+	alertsContainer.append(div);
 }
 
 function deleteAllAlerts() {
@@ -158,11 +162,19 @@ function deleteAllAlerts() {
 function successGameOver() {
 	createAlert('Well done! Generate a new number and keep practicing!', 'success');
 	showElem(generatedNumContainer);
+	hideElem(giveUpBtn);
 }
 
 function failureGameOver(str) {
 	createAlert(str, 'danger');
 	hideElem(generatedNumContainer);
+	showElem(giveUpBtn);
+}
+
+function giveUpGameOver() {
+	deleteAllAlerts();
+	createAlert('Too bad! Try again', 'secondary');
+	showElem(generatedNumContainer);
 }
 
 
